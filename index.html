@@ -9,18 +9,30 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>TODO LIST</h1>
-        <div>
-            <input type="text">
-            <button></button>
-            <button></button>
+    <header class="header">
+        <h1 class="header__name">TODO LIST</h1>
+        <div class="search-bar">
+            <input type="text" class="search-bar__input" placeholder="Search note...">
+            <button class="search-bar__submit">
+                <!-- svg -->
+            </button>
+        </div>
+        <div class="controls">
+            <button class="controls__button controls__button--dropdown">
+                ALL
+                <!-- svg -->
+            </button>
+            <button class="controls__button controls__button--theme-toggle">
+                <!-- svg -->
+            </button>
         </div>
     </header>
-    <body>
-        <div></div>
-        <div></div>
-    </body>
+    <main class="todo-list">
+        <div class="todo-list__tasks"></div>
+        <button class="todo-list__add-button">
+            <!-- svg -->
+        </button>
+    </main>
     <script src="./js/script.js"></script>
 </body>
 </html>
