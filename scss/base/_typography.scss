@@ -1,0 +1,9 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+body {
+    @include flex-center(column);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
