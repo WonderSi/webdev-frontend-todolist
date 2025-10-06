@@ -6,27 +6,36 @@ $color-black-opacity: #25252580;
 $color-light-purple: #C3C1E5;
 $color-light-black: #666666;
 
+$breakpoint-mobile-max: 767px;
+$breakpoint-tablet-min: 768px;
+$breakpoint-tablet-max: 1023px;
+$breakpoint-desktop-min: 1024px;
 
 :root {
-    --bg-color: var($color-white);
-    --text-color: var($color-black);
-    --text-crossed-color: var($color-black-opacity);
-    --input-color: var($color-purple);
-    --input-text-color: var($color-light-purple);
+    --bg-color: #{$color-white};
+    --text-color: #{$color-black};
+    --text-crossed-color: #{$color-black-opacity};
+    --input-color: #{$color-purple};
+    --input-text-color: #{$color-light-purple};
 }
 
 :root.theme-dark {
-    --bg-color: var($color-black);
-    --text-color: var($color-white);
-    --text-crossed-color: var($color-white-opacity);
-    --input-color: var($color-white);
-    --input-text-color: var($color-light-black);
+    --bg-color: #{$color-black};
+    --text-color: #{$color-white};
+    --text-crossed-color: #{$color-white-opacity};
+    --input-color: #{$color-white};
+    --input-text-color: #{$color-light-black};
 }
 
 :root {
-    --button-color: var($color-purple);
-    --button-text-coor: var($color-white);
-    --reverse-button-border-color: var($color-purple);
-    --reverse-button-color: var($color-white);
-    --reverse-button-text-color: var($color-purple);
+    --button-color: #{$color-purple};
+    --button-text-coor: #{$color-white};
+    --reverse-button-border-color: #{$color-purple};
+    --reverse-button-color: #{$color-white};
+    --reverse-button-text-color: #{$color-purple};
+
+    --mobile-max: #{$breakpoint-mobile-max};
+    --tablet-min: #{$breakpoint-tablet-min};
+    --tablet-max: #{$breakpoint-tablet-max};
+    --desktop-min: #{$breakpoint-desktop-min};
 }
