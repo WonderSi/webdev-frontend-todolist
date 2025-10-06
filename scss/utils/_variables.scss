@@ -1,0 +1,32 @@
+$color-purple: #6C63FF;
+$color-white: #F7F7F7;
+$color-white-opacity: #FFFFFF80;
+$color-black: #252525;
+$color-black-opacity: #25252580;
+$color-light-purple: #C3C1E5;
+$color-light-black: #666666;
+
+
+:root {
+    --bg-color: var($color-white);
+    --text-color: var($color-black);
+    --text-crossed-color: var($color-black-opacity);
+    --input-color: var($color-purple);
+    --input-text-color: var($color-light-purple);
+}
+
+:root.theme-dark {
+    --bg-color: var($color-black);
+    --text-color: var($color-white);
+    --text-crossed-color: var($color-white-opacity);
+    --input-color: var($color-white);
+    --input-text-color: var($color-light-black);
+}
+
+:root {
+    --button-color: var($color-purple);
+    --button-text-coor: var($color-white);
+    --reverse-button-border-color: var($color-purple);
+    --reverse-button-color: var($color-white);
+    --reverse-button-text-color: var($color-purple);
+}
