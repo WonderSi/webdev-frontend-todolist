@@ -1,1 +1,6 @@
-@use './base/fonts.scss';
+@use './base/reset';
+@use './base/fonts';
+@use './base/typography';
+
+@use './utils/mixins';
+@use './utils/variables';
