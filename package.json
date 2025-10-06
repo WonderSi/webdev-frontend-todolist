@@ -1,0 +1,15 @@
+{
+  "name": "webdev-frontend-todolist",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/WonderSi/webdev-frontend-todolist.git",
+  "author": "WonderSi <kirillkozlov00@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  },
+  "scripts": {
+    "sass:dev": "sass --watch scss/main.scss:dist/css/style.css",
+    "sass:prod": "sass --no-source-map --style compressed scss/main.scss:dist/css/style.css"
+  }
+}
