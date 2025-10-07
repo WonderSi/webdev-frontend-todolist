@@ -6,6 +6,22 @@ $(document).ready(function () {
     const $taskInput = $('.modal__input');
     const $taskList = $('.todo-list__tasks')
 
+    function updateEmptyState() {
+        const $tasks = $('.todo-list__tasks');
+        const $empty = $('.todo-list__empty');
+
+        const activeTaskCount = $tasks.children('.task-item:not(.task-item--removing)').length;
+
+        if (activeTaskCount === 0) {
+            $tasks.hide();
+            $empty.show();
+        } else {
+            $tasks.show();
+            $empty.hide();
+        }
+    }
+
+    updateEmptyState();
 
     $addButton.on('click', function () {
         $modal.show();
@@ -63,6 +79,7 @@ $(document).ready(function () {
         $taskList.append(taskHtml);
         $modal.hide();
         $taskInput.val('');
+        updateEmptyState();
     })
 
     $taskList.on('click', '.task-item__action--delete', function () {
@@ -76,6 +93,7 @@ $(document).ready(function () {
         setTimeout(() => {
             $taskItem.remove();
         }, 300);
+        updateEmptyState();
     });
 
     $taskList.on('click', '.task-item__action--edit', function () {
