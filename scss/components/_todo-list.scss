@@ -4,9 +4,18 @@
 .todo-list{
     display: flex;
     flex-direction: column;
+        margin-top: 10px;
+    padding-inline: 115px;
 }
 
 .todo-list__tasks{
     flex: 1;
     overflow-y: auto;
+    li {
+        border-bottom: 1px solid #6b63ff50;
+        &:last-child {
+            border: none;
+        }
+    }
+    
 }
