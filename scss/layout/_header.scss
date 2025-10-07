@@ -3,10 +3,12 @@
     flex-direction: column;
 }
 .header__name {
+    margin-top: 40px;
     text-align: center;
     font-weight: 500;
 }
 .header__nav {
+    margin-top: 15px;
     display: flex;
     gap: 16px;
 }
