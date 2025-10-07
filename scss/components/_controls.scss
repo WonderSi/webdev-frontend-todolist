@@ -1,0 +1,28 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.controls {
+    display: flex;
+    gap: 16px;
+}
+
+.controls__button{
+    background-color: var(--button-color);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    &.controls__button--dropdown{
+        font-family: 'Kanit', 'Roboto';
+        font-weight: 400;
+        font-size: 18px;
+        color: var(--button-text-coor);
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+    &.controls__button--theme-toggle{
+        color: var(--button-text-coor);
+        padding: 7px 8px 6px 8px;
+    }
+}

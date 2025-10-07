@@ -1,0 +1,35 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar__input {
+    width: 595px;
+    padding: 6px 16px;
+    font-family: 'Kanit', 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--input-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    &::placeholder { color: var(--input-text-color);}
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--input-shadow-color);
+    }
+}
+
+.search-bar__submit {
+    position: absolute;
+    top: 18%;
+    right: 2%;
+    color: var(--input-color);
+    border: none;
+    background: none;
+    cursor: pointer;
+}
