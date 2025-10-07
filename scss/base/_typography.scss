@@ -1,6 +1,22 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
+@font-face {
+  font-family: 'Kanit';
+  src: url('../../fonts/Kanit-Regular.woff') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('../../fonts/Kanit-Medium.woff') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
     @include flex-center(column);
     background-color: var(--bg-color);
