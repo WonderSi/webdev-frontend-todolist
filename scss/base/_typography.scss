@@ -1,5 +1,4 @@
 @use '../utils/variables' as *;
-@use '../utils/mixins' as *;
 
 @font-face {
   font-family: 'Kanit';
@@ -18,7 +17,6 @@
 }
 
 body {
-    @include flex-center(column);
     background-color: var(--bg-color);
     font-family: 'Kanit', 'Roboto';
     color: var(--text-color);
