@@ -1,0 +1,58 @@
+@use '../utils/mixins' as *;
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding-block: 17px;
+    padding-inline: 3px;
+    gap: 17px;
+    &__checkbox {
+        width: 26px;
+        height: 26px;
+        border-radius: 4px;
+        cursor: pointer;
+        &:checked {
+            accent-color: var(--button-color);
+            &:hover {
+                accent-color: var(--button-focus-color);
+            }   
+        }
+    }
+
+    &__label {
+        flex:1;
+        font-weight: 500;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__action {
+        background: none;
+        border: none;
+        color: var(--icon-gray-color);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        svg {
+            @include flex-center();
+        }
+        &--edit {
+            &:hover {
+                color: var(--icon-purple-color);
+            }
+        }
+        &--delete {
+            &:hover {
+                color: var(--icon-red-color);
+            }
+        }
+    }
+    &--completed {
+        .task-item__label {
+        color: var(--text-crossed-color);
+        text-decoration: line-through;
+        }
+    }
+}
