@@ -66,9 +66,16 @@ $(document).ready(function () {
     })
 
     $taskList.on('click', '.task-item__action--delete', function () {
-        if (confirm('Are you sure you want to delete it?')) {
-            $(this).closest('.task-item').remove();
+        if (!confirm('Are you sure you want to delete it?')) {
+            return
         }
+        const $taskItem = $(this).closest('.task-item');
+
+        $taskItem.addClass('task-item--removing');
+
+        setTimeout(() => {
+            $taskItem.remove();
+        }, 300);
     });
 
     $taskList.on('click', '.task-item__action--edit', function () {

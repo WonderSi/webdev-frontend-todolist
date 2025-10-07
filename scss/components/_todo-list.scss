@@ -11,6 +11,7 @@
 .todo-list__tasks{
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     li {
         border-bottom: 1px solid #6b63ff50;
         &:last-child {
