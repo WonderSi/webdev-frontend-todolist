@@ -1,0 +1,12 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.todo-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-list__tasks{
+    flex: 1;
+    overflow-y: auto;
+}
