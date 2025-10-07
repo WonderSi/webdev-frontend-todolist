@@ -2,5 +2,11 @@
 @use './base/fonts';
 @use './base/typography';
 
+@use './components/controls';
+@use './components/search-bar';
+
+@use './pages/header';
+@use './pages/todo-list';
+
 @use './utils/mixins';
 @use './utils/variables';
