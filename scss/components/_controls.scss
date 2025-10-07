@@ -16,13 +16,13 @@
         font-family: 'Kanit', 'Roboto';
         font-weight: 400;
         font-size: 18px;
-        color: var(--button-text-coor);
+        color: var(--button-text-color);
         display: flex;
         align-items: center;
         gap: 28px;
     }
     &.controls__button--theme-toggle{
-        color: var(--button-text-coor);
+        color: var(--button-text-color);
         padding: 7px 8px 6px 8px;
     }
 }
