@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    flex-direction: column;
+}
+.header__name {
+    text-align: center;
+    font-weight: 500;
+}
+.header__nav {
+    display: flex;
+    gap: 16px;
+}
