@@ -4,6 +4,7 @@
 body {
     @include flex-center(column);
     background-color: var(--bg-color);
+    font-family: 'Kanit', 'Roboto';
     color: var(--text-color);
     transition: all 0.3s ease;
 }
