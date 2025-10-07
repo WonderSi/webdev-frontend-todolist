@@ -1,3 +1,4 @@
+$color-gray: #CDCDCD;
 $color-red: #E50000;
 $color-purple: #6C63FF;
 $color-focus-purple: #534CC2;
@@ -34,8 +35,9 @@ $breakpoint-desktop-min: 1024px;
 }
 
 :root {
-    --icon-purple-color: #{$color-focus-purple};
+    --icon-gray-color: #{$color-gray};
     --icon-red-color: #{$color-red};
+    --icon-purple-color: #{$color-purple};
 
     --button-color: #{$color-purple};
     --button-focus-color: #{$color-focus-purple};
