@@ -1,6 +1,8 @@
 $color-purple: #6C63FF;
+$color-purple-shadow:#6C63FF66;
 $color-white: #F7F7F7;
 $color-white-opacity: #FFFFFF80;
+$color-white-shadow: #FFFFFF66;
 $color-black: #252525;
 $color-black-opacity: #25252580;
 $color-light-purple: #C3C1E5;
@@ -16,6 +18,7 @@ $breakpoint-desktop-min: 1024px;
     --text-color: #{$color-black};
     --text-crossed-color: #{$color-black-opacity};
     --input-color: #{$color-purple};
+    --input-shadow-color: #{$color-purple-shadow};
     --input-text-color: #{$color-light-purple};
 }
 
@@ -24,6 +27,7 @@ $breakpoint-desktop-min: 1024px;
     --text-color: #{$color-white};
     --text-crossed-color: #{$color-white-opacity};
     --input-color: #{$color-white};
+    --input-shadow-color: #{$color-white-shadow};
     --input-text-color: #{$color-light-black};
 }
 
