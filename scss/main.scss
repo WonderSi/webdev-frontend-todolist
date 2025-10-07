@@ -1,12 +1,13 @@
 @use './base/reset';
-@use './base/fonts';
 @use './base/typography';
 
+@use './components/add-button';
 @use './components/controls';
 @use './components/search-bar';
+@use './components/todo-list';
 
-@use './pages/header';
-@use './pages/todo-list';
+@use './layout/header';
+@use './layout/page';
 
 @use './utils/mixins';
 @use './utils/variables';
