@@ -1,4 +1,5 @@
 $color-purple: #6C63FF;
+$color-focus-purple: #534CC2;
 $color-purple-shadow:#6C63FF66;
 $color-white: #F7F7F7;
 $color-white-opacity: #FFFFFF80;
@@ -33,6 +34,7 @@ $breakpoint-desktop-min: 1024px;
 
 :root {
     --button-color: #{$color-purple};
+    --button-focus-color: #{$color-focus-purple};
     --button-text-coor: #{$color-white};
     --reverse-button-border-color: #{$color-purple};
     --reverse-button-color: #{$color-white};
