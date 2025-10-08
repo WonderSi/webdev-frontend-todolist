@@ -6,17 +6,24 @@ $(document).ready(function () {
     const $taskInput = $('.modal__input');
     const $taskList = $('.todo-list__tasks');
     const $searchInput = $('.search-bar__input');
+    const $filterButton = $('.controls__button--dropdown');
+    const $filterSpan = $('.filter-span');
+    const $dropdownMenu = $('.dropdown-menu');
+    const $dropdownItems = $('.dropdown-item');
 
-    function addTaskToList(task, completed = false) {
+    let currentFilter = 'all';
+    $filterSpan.text('ALL');
+
+    function addTaskToList(text, completed = false) {
         const taskId = 'task-' + Date.now();
         const completedClass = completed ? 'task-item--completed' : '';
         const checkedAttr = completed ? 'checked' : '';
 
         const taskHtml = 
         `
-        <li class="task-item">
-            <input type="checkbox" class="task-item__checkbox" id="${taskId}">
-            <span for="${taskId}" class="task-item__span">${taskText}</span>
+        <li class="task-item ${completedClass}">
+            <input type="checkbox" class="task-item__checkbox" id="${taskId}" ${checkedAttr}>
+            <span for="${taskId}" class="task-item__span">${text}</span>
             <div class="task-item__actions">
             <button class="task-item__action task-item__action--edit" aria-label="Edit">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +74,7 @@ $(document).ready(function () {
                 case 'all':
                     $task.show();
                     break;
-                case 'completed':
+                case 'complete':
                     isCompleted ? $task.show() : $task.hide();
                     break;
                 case 'incomplete':
@@ -206,6 +213,33 @@ $(document).ready(function () {
     });
 
     
+    $filterButton.on('click', function(e) {
+        e.stopPropagation();
+        $filterButton.toggleClass('active');
+        $dropdownMenu.toggleClass('active');
+    })
+
+    $(document).on('click', function(e) {
+        if(!$filterButton.is(e.target) && $filterButton.has(e.target).length === 0) {
+            $filterButton.removeClass('active');
+            $dropdownMenu.removeClass('active');
+        }
+    })
+
+    $dropdownItems.on('click', function() {
+        const filterValue =  $(this).data('filter');
+        currentFilter = filterValue;
+        
+        $dropdownItems.removeClass('active');
+        $(this).addClass('active');
+
+        const buttonText = $(this).text().toUpperCase();
+        $filterSpan.text(buttonText);
+
+        $filterButton.removeClass('active');
+        $dropdownMenu.removeClass('active');
+        applyCurrentFilter();
+    })
 
 
 })
