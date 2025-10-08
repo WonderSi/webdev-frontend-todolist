@@ -4,7 +4,8 @@ $(document).ready(function () {
     const $cancelButton = $('.modal__button--cancel');
     const $appplyButton = $('.modal__button--apply');
     const $taskInput = $('.modal__input');
-    const $taskList = $('.todo-list__tasks')
+    const $taskList = $('.todo-list__tasks');
+    const $searchInput = $('.search-bar__input');
 
     function updateEmptyState() {
         const $tasks = $('.todo-list__tasks');
@@ -152,6 +153,26 @@ $(document).ready(function () {
         } else {
             $item.removeClass('task-item--completed');
         }
+    });
+
+
+
+    $searchInput.on('input', function () {
+    const searchTerm = $(this).val().trim().toLowerCase();
+    const $tasks = $('.todo-list__tasks .task-item');
+
+    $tasks.each(function () {
+        const $task = $(this);
+        const taskText = $task.find('.task-item__span').text().toLowerCase();
+
+        if (taskText.includes(searchTerm)) {
+        $task.show();
+        } else {
+        $task.hide();
+        }
+    });
+
+    updateEmptyState();
     });
 
 
