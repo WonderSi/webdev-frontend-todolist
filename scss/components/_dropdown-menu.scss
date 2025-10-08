@@ -15,10 +15,9 @@
     border-radius: 8px;
     overflow: hidden;
     z-index: 1000;
-}
-
-.dropdown-menu.active {
-    display: block;
+    &.active {
+        display: block;
+    }
 }
 
 .dropdown-item {

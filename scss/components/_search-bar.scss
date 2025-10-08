@@ -3,19 +3,19 @@
 
 .search-bar {
     position: relative;
-}
 
-.search-bar__input {
-    width: 595px;
-}
+    &__input {
+        width: 595px;
+    }
 
-.search-bar__submit {
-    position: absolute;
-    top: 18%;
-    right: 2%;
-    color: var(--input-color);
-    border: none;
-    background: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    &__submit {
+        position: absolute;
+        top: 18%;
+        right: 2%;
+        color: var(--input-color);
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 }
