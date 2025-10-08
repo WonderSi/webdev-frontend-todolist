@@ -10,6 +10,7 @@ $(document).ready(function () {
     const $filterSpan = $('.filter-span');
     const $dropdownMenu = $('.dropdown-menu');
     const $dropdownItems = $('.dropdown-item');
+    const $themeButton = $('.controls__button--theme-toggle')
 
     let currentFilter = 'all';
     $filterSpan.text('ALL');
@@ -239,6 +240,10 @@ $(document).ready(function () {
         $filterButton.removeClass('active');
         $dropdownMenu.removeClass('active');
         applyCurrentFilter();
+    })
+
+    $themeButton.on('click', function() {
+        $(":root").toggleClass('theme-dark')
     })
 
 
