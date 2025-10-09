@@ -1,3 +1,5 @@
+@use '../utils/mixins' as *;
+
 .modal {
     display: none;
     position: fixed;
@@ -40,6 +42,7 @@
         display: flex;
         justify-content: space-between;
         margin-top: 128px;
+        gap: 50px;
     }
 
     &__button {
@@ -69,8 +72,38 @@
             }
         }
     }
+}
 
+@include respond-to(tablet) {
+    .modal {
+        &__content {
+            margin: 4% auto;
+        }
+    }
+}
 
+@include respond-to(mobile) {
+    .modal {
+        &__content {
+            margin: 4% auto;
+        }
 
-    
+        &__title {
+            font-size: 20px;
+        }
+
+        &__input {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        &__buttons {
+            margin-top: 64px;
+        }
+
+        &__button {
+            font-size: 14px;
+            padding: 8px 22px;
+        }
+    }
 }

@@ -1,3 +1,13 @@
+@use '../utils/mixins' as *;
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Kanit', 'Roboto';
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    overflow-y: hidden;
+}
+
 input {
     width: auto;
     padding: 6px 16px;
@@ -16,3 +26,16 @@ input {
         box-shadow: 0 0 0 3px var(--input-shadow-color);
     }
 }
+
+
+@include respond-to(tablet) {
+    
+}
+
+@include respond-to(mobile) {
+    input {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+}
+

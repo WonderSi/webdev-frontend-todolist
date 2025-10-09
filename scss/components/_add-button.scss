@@ -23,3 +23,12 @@
         @include flex-center();
     }
 }
+
+@include respond-to(mobile) {
+    .add-button {
+        padding: 5px;
+        svg {
+            transform: scale(0.8)
+        }
+    }
+}

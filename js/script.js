@@ -46,46 +46,56 @@ $(document).ready(function () {
 
         $taskList.append(taskHtml);
         
-        updateEmptyState();
+        applyFiltersAndSearch();
     }
 
-    function updateEmptyState() {
-        const $tasks = $('.todo-list__tasks');
-        const $empty = $('.todo-list__empty');
-
-        const activeTaskCount = $tasks.children('.task-item:not(.task-item--removing)').length;
-
-        if (activeTaskCount === 0) {
-            $tasks.hide();
-            $empty.show();
-        } else {
-            $tasks.show();
-            $empty.hide();
-        }
-    }
-
-    function applyCurrentFilter() {
+    function applyFiltersAndSearch() {
+        const searchTerm = $searchInput.val().trim().toLowerCase();
         const $tasks = $('.task-item');
+        let visibleCount = 0;
 
         $tasks.each(function() {
             const $task = $(this);
             const isCompleted = $task.hasClass('task-item--completed');
-                    
+            const taskText = $task.find('.task-item__span').text().toLowerCase();
+            
+            let passesFilter = false;
             switch(currentFilter) {
                 case 'all':
-                    $task.show();
+                    passesFilter = true;
                     break;
                 case 'complete':
-                    isCompleted ? $task.show() : $task.hide();
+                    passesFilter = isCompleted;
                     break;
                 case 'incomplete':
-                    !isCompleted ? $task.show() : $task.hide();
+                    passesFilter = !isCompleted;
                     break;
             }
+            
+            let passesSearch = true;
+            if (searchTerm) {
+                passesSearch = taskText.includes(searchTerm);
+            }
+            
+            const shouldShow = passesFilter && passesSearch;
+            $task.toggle(shouldShow);
+            
+            if (shouldShow) visibleCount++;
         });
+        
+        const $empty = $('.todo-list__empty');
+        const $taskListContainer = $('.todo-list__tasks');
+        
+        if (visibleCount === 0) {
+            $taskListContainer.hide();
+            $empty.show();
+        } else {
+            $taskListContainer.show();
+            $empty.hide();
+        }
     }
 
-    updateEmptyState();
+    applyFiltersAndSearch();
 
     $addButton.on('click', function () {
         $modal.show();
@@ -129,9 +139,9 @@ $(document).ready(function () {
 
         setTimeout(() => {
             $taskItem.remove();
-            applyCurrentFilter();
+            applyFiltersAndSearch();
         }, 300);
-        updateEmptyState();
+        applyFiltersAndSearch();
     });
 
     $taskList.on('click', '.task-item__action--edit', function () {
@@ -190,7 +200,7 @@ $(document).ready(function () {
         } else {
             $item.removeClass('task-item--completed');
         }
-        applyCurrentFilter();
+        applyFiltersAndSearch();
     });
 
 
@@ -210,7 +220,7 @@ $(document).ready(function () {
         }
     });
 
-    updateEmptyState();
+    applyFiltersAndSearch();
     });
 
     
@@ -239,12 +249,11 @@ $(document).ready(function () {
 
         $filterButton.removeClass('active');
         $dropdownMenu.removeClass('active');
-        applyCurrentFilter();
+        applyFiltersAndSearch();
     })
 
     $themeButton.on('click', function() {
         $(":root").toggleClass('theme-dark')
     })
-
 
 })
