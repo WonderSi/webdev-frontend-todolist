@@ -12,8 +12,98 @@ $(document).ready(function () {
     const $dropdownItems = $('.dropdown-item');
     const $themeButton = $('.controls__button--theme-toggle')
 
+    const STORAGE_KEYS = {
+        TASKS: 'todoTasks',
+        THEME: 'todoTheme',
+        FILTER: 'todoFilter'
+    }
+
     let currentFilter = 'all';
     $filterSpan.text('ALL');
+
+    function loadTasksFromStorage() {
+        try {
+            const taskJson = localStorage.getItem(STORAGE_KEYS.TASKS);
+            return taskJson ? JSON.parse(taskJson) : [];
+        } catch (e) {
+            console.error("Error loading tasks:", e);
+            return [];
+        }
+    }
+
+    function saveTasksToStorage() {
+        try {
+            const tasks = [];
+            $('.task-item').each(function() {
+                const $task = $(this);
+                tasks.push({
+                    id: $task.find('.task-item__checkbox').attr('id'),
+                    text: $task.find('.task-item__span').text().trim(),
+                    completed: $task.hasClass('task-item--completed')
+                })
+            })
+            localStorage.setItem(STORAGE_KEYS.TASKS, JSON.stringify(tasks))
+        } catch (e) {
+            console.error("Error saving tasks:", e);
+        }
+    }
+
+    function loadThemeFromStorage() {
+        try {
+            const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
+            if (savedTheme === 'dark') {
+                $(':root').addClass('theme-dark');
+            } else {
+                $(':root').removeClass('theme-dark');
+            }
+        } catch (e) {
+            console.error('Error loading theme :', e);
+        }
+    }
+
+    function saveThemeToStorage(isDark) {
+        try {
+            localStorage.setItem(STORAGE_KEYS.THEME, isDark ? 'dark' : 'light');
+        } catch (e) {
+            console.error('Error saving theme:', e);
+        }
+    }
+
+    function loadFilterFromStorage() {
+        try {
+            const savedFilter = localStorage.getItem(STORAGE_KEYS.FILTER);
+            if (savedFilter) {
+                currentFilter = savedFilter;
+                $dropdownItems.removeClass('active');
+                $dropdownItems.filter(`[data-filter="${savedFilter}"]`).addClass('active');
+                
+                const buttonText = $dropdownItems.filter(`[data-filter="${savedFilter}"]`).text().toUpperCase();
+                $filterSpan.text(buttonText);
+            }
+        } catch (e) {
+            console.error('Error loading filter:', e);
+        }
+    }
+
+    function saveFilterToStorage(filter) {
+        try {
+            localStorage.setItem(STORAGE_KEYS.FILTER, filter);
+        } catch (e) {
+            console.error('Error saving filter:', e);
+        }
+    }
+
+    function initializeApp() {
+        loadThemeFromStorage();
+        loadFilterFromStorage();
+
+        const savedTasks = loadTasksFromStorage();
+        savedTasks.forEach(task => {
+            addTaskToList(task.text, task.completed, task.id);
+        });
+        
+        applyFiltersAndSearch();
+    }
 
     function addTaskToList(text, completed = false) {
         const taskId = 'task-' + Date.now();
@@ -45,7 +135,7 @@ $(document).ready(function () {
         `;
 
         $taskList.append(taskHtml);
-        
+        saveTasksToStorage();
         applyFiltersAndSearch();
     }
 
@@ -139,9 +229,9 @@ $(document).ready(function () {
 
         setTimeout(() => {
             $taskItem.remove();
+            saveTasksToStorage();
             applyFiltersAndSearch();
         }, 300);
-        applyFiltersAndSearch();
     });
 
     $taskList.on('click', '.task-item__action--edit', function () {
@@ -176,6 +266,7 @@ $(document).ready(function () {
             .text(newText);
 
             $input.replaceWith($newSpan);
+            saveTasksToStorage();
         };
 
         $input.on('blur', saveEdit);
@@ -200,27 +291,14 @@ $(document).ready(function () {
         } else {
             $item.removeClass('task-item--completed');
         }
+        saveTasksToStorage();
         applyFiltersAndSearch();
     });
 
 
 
     $searchInput.on('input', function () {
-    const searchTerm = $(this).val().trim().toLowerCase();
-    const $tasks = $('.todo-list__tasks .task-item');
-
-    $tasks.each(function () {
-        const $task = $(this);
-        const taskText = $task.find('.task-item__span').text().toLowerCase();
-
-        if (taskText.includes(searchTerm)) {
-        $task.show();
-        } else {
-        $task.hide();
-        }
-    });
-
-    applyFiltersAndSearch();
+        applyFiltersAndSearch();
     });
 
     
@@ -249,11 +327,17 @@ $(document).ready(function () {
 
         $filterButton.removeClass('active');
         $dropdownMenu.removeClass('active');
+        
+        saveFilterToStorage(filterValue);
         applyFiltersAndSearch();
     })
 
     $themeButton.on('click', function() {
-        $(":root").toggleClass('theme-dark')
+        const $root = $(":root");
+        $root.toggleClass('theme-dark');
+        const isDark = $root.hasClass('theme-dark');
+        saveThemeToStorage(isDark);
     })
 
+    initializeApp();
 })
