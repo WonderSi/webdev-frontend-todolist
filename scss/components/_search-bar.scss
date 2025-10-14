@@ -1,0 +1,45 @@
+@use '../utils/mixins' as *;
+
+.search-bar {
+    position: relative;
+
+    &__input {
+        width: 595px;
+    }
+
+    &__submit {
+        position: absolute;
+        top: 18%;
+        right: 2%;
+        color: var(--input-color);
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+}
+
+@include respond-to(tablet) {
+    .search-bar {
+        &__input {
+            width: 425px;
+        }
+
+        &__submit {
+            right: 3%;
+        }
+    }
+}
+
+@include respond-to(mobile) {
+    .search-bar {
+        &__input {
+            width: 280px;
+        }
+
+        &__submit {
+            top: 15%;
+            right: 4%;
+        }
+    }
+}

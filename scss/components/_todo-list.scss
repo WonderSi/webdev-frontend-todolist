@@ -1,0 +1,69 @@
+@use '../utils/mixins' as *;
+
+.todo-list{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding-inline: 115px;
+    height: 50vh;
+
+    &__tasks{
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none; 
+        li {
+            border-bottom: 1px solid #6b63ff50;
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+
+    &__empty{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    &__empty-text {
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 20px;
+        color: var(--text-color);
+    }
+}
+
+@include respond-to(tablet) {
+    .todo-list{
+        padding-inline: 75px;
+        &__empty{
+            margin-top: 0px;
+            svg {
+                transform: scale(0.7);
+            }
+        }
+        &__empty-text {
+            margin-top: 0px;
+        }
+    }
+}
+
+@include respond-to(mobile) {
+    .todo-list{
+        padding-inline: 25px;
+        &__empty{
+            margin-top: 0px;
+            svg {
+                transform: scale(0.8);
+            }
+        }
+
+        &__empty-text {
+            margin-top: 0px;
+            font-size: 16px;
+        }
+    }
+}
