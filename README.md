@@ -3,6 +3,8 @@
 ![HTML5](https://img.shields.io/badge/HTML5-Structure-orange?style=for-the-badge&logo=html5)
 ![CSS3](https://img.shields.io/badge/CSS3-Styling-blue?style=for-the-badge&logo=css3)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
+![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
 ## 📸 Скриншоты
 
@@ -90,6 +92,7 @@ git checkout scss-jquery
 
 ---
 Выполнил Козлов Кирилл ФИТ-231
+
 
 
 
